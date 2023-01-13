@@ -1,0 +1,594 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
+@import "./variable";
+@import "./fonts";
+@import "./mixins";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Ubuntu-Regular", sans-serif;
+  line-height: 1.5;
+  background: $Alabaster;
+  color: $Marine-blue;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.form-container {
+  max-width: 780px;
+  width: 100%;
+  margin: 5rem auto;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0px 0px 1px rgba($color: #000, $alpha: 0.1);
+  background: $White;
+  min-height: 520px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+}
+
+.step-header {
+  padding: 1.8rem 0;
+  h2 {
+    font-size: 1.8rem;
+    font-family: "Ubuntu-Bold", sans-serif;
+    letter-spacing: 1px;
+    line-height: 1.7;
+  }
+  p {
+    color: $Cool-gray;
+    font-size: 1rem;
+    font-weight: 400;
+  }
+}
+
+.button-container {
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.prev-button,
+.next-button,
+.confirm {
+  font-family: "Ubuntu-Medium", sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.prev-button {
+  background: none;
+  border: none;
+  color: $Cool-gray;
+  &:hover {
+    color: $Marine-blue;
+  }
+}
+
+.next-button,
+.confirm {
+  color: $White;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.5rem;
+}
+
+.next-button {
+  background: $Marine-blue;
+}
+
+.confirm {
+  background: $Purplish-blue;
+  &:hover {
+    background: $Pastel-blue;
+  }
+}
+
+// ****SIDEBAR****
+.sidebar {
+  background: url("../../public/images/bg-sidebar-desktop.svg");
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: cover;
+  border-radius: 0.5rem;
+  padding: 2rem;
+  flex: 0 1 30%;
+  display: flex;
+  // justify-content: space-evenly;
+  align-items: flex-start;
+  flex-direction: column;
+  align-self: stretch;
+}
+
+.step {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0.8rem 0;
+
+  .number,
+  .number-active {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.8rem;
+    font-weight: 700;
+    width: 20px;
+    height: 20px;
+    color: $White;
+    font-size: 0.8rem;
+    border-radius: 50%;
+    border: 2px solid $White;
+    font-family: "Ubuntu-Bold", sans-serif;
+  }
+
+  .number-active {
+    color: $Marine-blue;
+    background-color: $Light-blue;
+    border-color: $Light-blue;
+  }
+
+  .desc {
+    margin-left: 0.8rem;
+    p {
+      &:first-child {
+        color: $Pastel-blue;
+        font-size: 0.7rem;
+        line-height: 1.3;
+        text-transform: uppercase;
+      }
+      &:last-child {
+        color: $White;
+        text-transform: uppercase;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+      }
+    }
+  }
+}
+
+.step-container {
+  flex: 0 1 55%;
+  align-items: stretch;
+}
+
+// Step 1
+.step1 {
+  @include flex-step;
+
+  .input-container {
+    margin: 1rem 0;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      label,
+      span {
+        font-size: 0.8rem;
+        font-weight: 400;
+        margin-bottom: 0.2rem;
+        display: inline-block;
+      }
+
+      span {
+        color: red;
+        font-family: "Ubuntu-Bold", sans-serif;
+      }
+    }
+
+    input {
+      display: block;
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid $Light-gray;
+      color: $Marine-blue;
+      background: $White;
+      box-shadow: inset 0 0 2px rgba($color: #000000, $alpha: 0.1);
+      font-family: "Ubuntu-Medium", sans-serif;
+
+      &:focus {
+        outline: 1px solid $Pastel-blue;
+        border-color: transparent;
+      }
+
+      &::placeholder {
+        color: $Light-gray;
+      }
+    }
+
+    .input-error {
+      border-color: $Strawberry-red;
+      outline-color: $Strawberry-red;
+    }
+  }
+}
+
+// Step 2
+.step2 {
+  @include flex-step;
+
+  .card-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 220px;
+  }
+
+  .card {
+    background: $White;
+    box-shadow: 0px 0px 3px rgba($color: #000000, $alpha: 0.2);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    flex: 0 1 30%;
+    border: 1px solid transparent;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $Purplish-blue;
+    }
+
+    .img-container {
+      margin-bottom: 1.5rem;
+    }
+    h4 {
+      font-family: "Ubuntu-Medium", sans-serif;
+    }
+    p {
+      font-size: 0.8rem;
+      color: $Cool-gray;
+    }
+    .free {
+      font-size: 0.7rem;
+      color: $Marine-blue;
+    }
+  }
+
+  .card-active {
+    background: $Magnolia;
+    border-color: $Purplish-blue;
+  }
+
+  .plan-time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.6rem 0;
+    border-radius: 0.5rem;
+    background: $Alabaster;
+
+    span {
+      font-size: 0.9rem;
+    }
+
+    .time {
+      color: $Cool-gray;
+    }
+
+    .time.active {
+      color: $Marine-blue;
+    }
+
+    label {
+      position: relative;
+      display: block;
+      margin: 0px 1.5rem;
+      width: 45px;
+      height: 25px;
+      z-index: 2;
+    }
+
+    input {
+      display: none;
+      &:checked + .circle::before {
+        transform: translateX(19px);
+      }
+    }
+
+    .circle {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: $Marine-blue;
+      transition: 0.3s;
+      border-radius: 2rem;
+
+      &::before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 4px;
+        bottom: 3.2px;
+        background: $White;
+        border-radius: 50%;
+        transition: 0.3s;
+      }
+    }
+  }
+}
+
+// Step 3
+.step3 {
+  @include flex-step;
+
+  .add-on-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    box-shadow: 0px 0px 3px rgba($color: #000000, $alpha: 0.2);
+    border: 1px solid transparent;
+    border-radius: 0.5rem;
+    background: $White;
+    margin: 0.5rem 0;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $Purplish-blue;
+    }
+
+    .price {
+      font-size: 0.85rem;
+      color: $Purplish-blue;
+    }
+
+    .add-on {
+      display: flex;
+      align-items: center;
+
+      label {
+        display: block;
+        position: relative;
+        margin-bottom: 20px;
+        margin-right: 3rem;
+        cursor: pointer;
+
+        user-select: none;
+
+        input {
+          position: absolute;
+          opacity: 0;
+          cursor: pointer;
+          height: 0;
+          width: 0;
+        }
+
+        span {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 22px;
+          width: 22px;
+          background-color: $White;
+          border: 1px solid $Cool-gray;
+          border-radius: 5px;
+          transition: 0.3s;
+        }
+
+        &:hover .checkbox ~ span {
+          background-color: #ccc;
+        }
+
+        & .checkbox:checked ~ span {
+          background-color: $Purplish-blue;
+        }
+
+        span:after {
+          content: "";
+          position: absolute;
+          display: none;
+        }
+
+        & .checkbox:checked ~ span:after {
+          display: block;
+          width: 20px;
+          height: 20px;
+          background: url("../../public/images/icon-checkmark.svg");
+          background-repeat: no-repeat;
+          background-position: 51% 50%;
+          transition: 0.3s;
+        }
+      }
+    }
+
+    .info {
+      h4 {
+        font-family: "Ubuntu-Medium", sans-serif;
+      }
+      p {
+        font-size: 0.9rem;
+        color: $Cool-gray;
+      }
+    }
+  }
+
+  .add-on-active {
+    background: $Magnolia;
+    border-color: $Purplish-blue;
+  }
+}
+
+//step4
+.step4 {
+  @include flex-step;
+  .invoice {
+    background-color: $Alabaster;
+    padding: 1rem;
+    border-radius: 0.5rem;
+
+    .plan {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid $Magnolia;
+      font-family: "Ubuntu-Medium", sans-serif;
+
+      h5 {
+        line-height: 1.2;
+      }
+
+      button {
+        border: none;
+        background: none;
+        text-transform: capitalize;
+        font-size: 0.8rem;
+        color: $Purplish-blue;
+        cursor: pointer;
+        &:hover {
+          color: $Pastel-blue;
+          border-bottom: 1px solid $Pastel-blue;
+        }
+      }
+
+      p {
+        font-size: 0.9rem;
+        font-family: "Ubuntu-Bold", sans-serif;
+      }
+    }
+
+    .addOns {
+      padding: 0.8rem 0;
+      font-size: 0.8rem;
+
+      .addOn {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0.5rem 0;
+        color: $Cool-gray;
+
+        .price {
+          color: $Marine-blue;
+        }
+      }
+    }
+  }
+  .total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    color: $Cool-gray;
+
+    .price {
+      font-size: 1.1rem;
+      color: $Purplish-blue;
+      font-family: "Ubuntu-Bold", sans-serif;
+    }
+  }
+}
+
+// Thank You
+.thank-you {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 520px;
+  h2 {
+    font-family: "Ubuntu-Medium", sans-serif;
+    color: $Marine-blue;
+    font-size: 1.8rem;
+    margin: 0.8rem 0;
+  }
+  p {
+    font-size: 0.9rem;
+    color: $Cool-gray;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .form-container {
+    flex-direction: column;
+    margin-top: 7rem;
+  }
+  .sidebar {
+    background: url("../../public/images/bg-sidebar-mobile.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 80%;
+    z-index: -1;
+    border-radius: 0;
+
+    .step {
+      .desc {
+        display: none;
+      }
+    }
+  }
+
+  .button-container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 2rem;
+    background-color: $White;
+  }
+
+  .step-container {
+    width: 100%;
+  }
+
+  .step1,
+  .step2,
+  .step3,
+  .step4 {
+    display: block;
+    justify-content: unset;
+  }
+
+  .step2 {
+    .card-container {
+      flex-direction: column;
+      .card {
+        display: flex;
+        flex: 0 1 100%;
+        width: 100%;
+        margin-bottom: 2rem;
+        .img-container {
+          margin-right: 2rem;
+        }
+      }
+    }
+  }
+
+  .step3 {
+    .add-on-container {
+      margin-bottom: 2rem;
+    }
+  }
+
+  .step4 {
+    .total {
+      padding: 2rem 0;
+    }
+  }
+}
