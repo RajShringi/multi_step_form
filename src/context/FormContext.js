@@ -63,7 +63,6 @@ export const FormContextProvider = ({ children }) => {
       TOTAL += selectedPlan[0].price_yr;
       TOTAL += selectedAddOns.reduce((acc, cur) => (acc += cur.price_yr), 0);
     }
-    console.log(TOTAL, "USEEFFECT");
   }, [planTime, addOns, plans]);
 
   const next = () => {
@@ -82,18 +81,12 @@ export const FormContextProvider = ({ children }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const errors = {};
     switch (currentStep) {
       case 1:
-        if (!formValues.name) {
-          errors.name = "This field is required";
-        } else if (!formValues.email) {
-          errors.email = "This field is required";
-        } else if (!formValues.email.includes("@")) {
-          errors.email = "Enter valid email address";
-        } else if (!formValues.phone_no) {
-          errors.phone_no = "This filed is required";
+        if (Object.keys(validateInputs(formValues)).length !== 0) {
+          setErrors(validateInputs(formValues));
         } else {
+          setErrors({});
           next();
         }
         break;
@@ -103,8 +96,25 @@ export const FormContextProvider = ({ children }) => {
       default:
         next();
     }
-    setErrors(errors);
   };
+
+  function validateInputs({ name, email, phone_no }) {
+    const errors = {};
+    if (!name) {
+      errors.name = "This field is required";
+    }
+
+    if (!email) {
+      errors.email = "This field is required";
+    } else if (!email.includes("@")) {
+      errors.email = "Enter valid email address";
+    }
+
+    if (!phone_no) {
+      errors.phone_no = "This filed is required";
+    }
+    return errors;
+  }
 
   return (
     <FormContext.Provider

@@ -11,8 +11,6 @@ function Step1() {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  console.log(errors);
-
   return (
     <div className="step1">
       <StepHeader
